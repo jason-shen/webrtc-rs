@@ -23,7 +23,7 @@ env_logger = "0.9"
 clap = "3.0"
 hyper = { version = "0.14", features = ["full"] }
 signal = { path = "examples/signal" }
-tokio-util = { version="0.6", features = ["codec"] }
+tokio-util = { version = "0.6", features = ["codec"] }
 anyhow = "1.0"
 chrono = "0.4"
 log = "0.4.16"
@@ -32,6 +32,8 @@ serde_json = "1.0"
 bytes = "1.1"
 lazy_static = "1.4"
 rand = "0.8"
+warp = "0.3"
+uuid = { version = "1.2", features = ["v4"] }
 
 
 [[example]]
@@ -147,4 +149,9 @@ bench = false
 [[example]]
 name = "ice-restart"
 path = "examples/ice-restart/ice-restart.rs"
+bench = false
+
+[[example]]
+name = "sfu"
+path = "examples/sfu/sfu.rs"
 bench = false
