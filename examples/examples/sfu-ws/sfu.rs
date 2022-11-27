@@ -6,6 +6,7 @@ use warp::{serve, ws::Ws, Filter, Server};
 
 use crate::{models::PeerConnections, server::start_ws};
 
+mod messages;
 mod models;
 mod server;
 
@@ -71,7 +72,11 @@ async fn main() -> Result<()> {
             .and(warp::ws())
             .and(peer_connections)
             .map(|ws: Ws, peer_connections| {
-                ws.on_upgrade(move |socket| start_ws(socket, peer_connections))
+                ws.on_upgrade(move |socket| async {
+                    start_ws(socket, peer_connections)
+                        .await
+                        .expect("error creating peer_connection")
+                })
             });
     let routers = ws_socket;
     let server = serve(routers).try_bind(socket_address);

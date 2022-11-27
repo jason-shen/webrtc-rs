@@ -152,6 +152,6 @@ path = "examples/ice-restart/ice-restart.rs"
 bench = false
 
 [[example]]
-name = "sfu"
-path = "examples/sfu/sfu.rs"
+name = "sfu-ws"
+path = "examples/sfu-ws/sfu.rs"
 bench = false
